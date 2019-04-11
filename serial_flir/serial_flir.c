@@ -26,7 +26,8 @@ int main(int argc, char *argv[])
     int fd;
     unsigned char cmd[128];
 
-    fd = serial_init(5);
+    fd = serial_init(2);
+    printf("serial_initial succeed\n");
 
     cmd[0] = 0x00; cmd[1] = 0x05;  /* 0005 linear algorithm*/
     send_command(fd, AGC_TYPE, cmd, 2);
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
     cmd[0] = 0; cmd[1] = 0;  /* set default*/
     send_command(fd, SET_DEFAULTS, cmd, 0);
 
-    printf("\n");
+    printf("end\n");
 
     close(fd);
 }

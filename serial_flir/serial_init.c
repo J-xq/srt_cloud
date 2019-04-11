@@ -44,6 +44,7 @@ int serial_init(int bb)
         printf("open %s error\n", DEV);
         return -1;
     }
+    printf("%s opened\n", DEV);
     br = bautratelist[bb];
 
     bzero(&newtio, sizeof(newtio)); /* clear struct for new port settings */

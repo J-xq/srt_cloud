@@ -47,12 +47,15 @@ int send_command(int fd, unsigned char CODE, char *data, int ncmd)
     cmd[9 + ncmd] = (unsigned char)(crc & 0xff);
 
     write(fd, cmd, 10 + ncmd);
+    printf("write succeed\n");
     usleep(15000);
-    cnt = read(fd, cmd, 300);
+    cnt = read(fd, cmd, 128);
+    printf("read %d bytes\n",cnt);
     usleep(4000);
 
     switch (cmd[1]) {
     case 0:
+        printf("MESSAGE_RECEIVED\n");
         break;
     case 2:
         printf("NOT_READY\n");
@@ -83,6 +86,6 @@ int send_command(int fd, unsigned char CODE, char *data, int ncmd)
         break;
     }
 
-    memcpy(data, cmd, cnt);
+    //memcpy(data, cmd, cnt);
     return cnt;
 }
