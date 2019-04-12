@@ -33,9 +33,7 @@ while True:
                 print("开始发送")
                 #发送时间
                 t = time.time()
-                sec = (t - int(t))*1000
-                t_str = time.strftime("%Y-%m-%d %H:%M:%S.",time.localtime(t))
-                t_str += "%03d"%sec
+                t_str = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(t))
                 print(t_str)
                 conn.send(t_str.encode("utf-8"))
                 conn.recv(1024)
