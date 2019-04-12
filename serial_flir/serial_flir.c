@@ -29,15 +29,22 @@ int main(int argc, char *argv[])
     fd = serial_init(2);
     printf("serial_initial succeed\n");
 
-    cmd[0] = 0x00; cmd[1] = 0x05;  /* 0005 linear algorithm*/
+/*
+    cmd[0] = 0x00; cmd[1] = 0x00;  
+    send_command(fd, FACTORY_DEFAULTS, cmd, 0);
+*/
+
+    cmd[0] = 0x00; cmd[1] = 0x02;  //high gain mode
+    send_command(fd, GAIN_MODE, cmd, 2);
+
+    cmd[0] = 0x00; cmd[1] = 0x05;  //linear
     send_command(fd, AGC_TYPE, cmd, 2);
+
+    cmd[0] = 0x00; cmd[1] = 0xc8;  //tail rejection percentage=20%
+    send_command(fd, TAIL_SIZE, cmd, 2);
     
 
-    cmd[0] = 0; cmd[1] = 0;  /* 0000 tail rejection percentage=0 */
-    send_command(fd, TAIL_SIZE, cmd, 2);
-
-
-    cmd[0] = 0; cmd[1] = 0;  /* set default*/
+    cmd[0] = 0; cmd[1] = 0;  
     send_command(fd, SET_DEFAULTS, cmd, 0);
 
     printf("end\n");

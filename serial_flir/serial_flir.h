@@ -28,6 +28,9 @@
 #define BAUD_RATE           0x07
 #define AGC_TYPE            0x13
 #define TAIL_SIZE           0x1b
+#define CONTRAST            0x14
+#define BRIGHTNESS          0x15
+#define GAIN_MODE           0x0a
 
 #define READ_SENSOR         0x20
 
