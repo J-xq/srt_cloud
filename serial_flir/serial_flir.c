@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     cmd[0] = 0x00; cmd[1] = 0x05;  //linear
     send_command(fd, AGC_TYPE, cmd, 2);
 
-    cmd[0] = 0x00; cmd[1] = 0xc8;  //tail rejection percentage=20%
+    cmd[0] = 0x00; cmd[1] = 0x0a;  //tail rejection percentage=1%
     send_command(fd, TAIL_SIZE, cmd, 2);
     
 

@@ -1,11 +1,15 @@
 import cv2
+import numpy as np
+i=240+50
+j=360-30
+I=cv2.imread("2019-04-19 17:30:45.png")
+print(I[i:i+10,j:j+10,0])
+print(np.sum(I[i:i+10,j:j+10,0])/100)
+#print(I[100:105,360:365,0])
+print("///////////////////////")
 
-I=cv2.imread("2019-03-15 12:22:11.803.png")
-print(I.shape)
-print(I[220:260,340:380,:])
-B=cv2.imread("2019-04-12 12:38:09.png")
-print(B.shape)
-print(B[220:260,340:380,:])
-I=I-B
+I[i:i+10,j:j+10,0]=0
+I[i:i+10,j:j+10,1]=0
+I[i:i+10,j:j+10,2]=255
 
-cv2.imwrite("after_pretreatment.png",I)
+cv2.imwrite("position.png",I)
