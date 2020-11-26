@@ -25,6 +25,8 @@
 int send_command(int fd, unsigned char CODE, char *data, int ncmd)
 {
     int i, cnt;
+    float FPA_TEMP;
+    FILE * fp;
     unsigned short crc;
     unsigned char cmd[128];
 
@@ -51,7 +53,7 @@ int send_command(int fd, unsigned char CODE, char *data, int ncmd)
     usleep(15000);
     cnt = read(fd, cmd, 128);
     printf("read %d bytes\n",cnt);
-    usleep(4000);
+    //usleep(4000);
 
     switch (cmd[1]) {
     case 0:
@@ -85,7 +87,11 @@ int send_command(int fd, unsigned char CODE, char *data, int ncmd)
         printf("UNKNOWN ERROR: code:%02X, status:%02X\n", CODE, cmd[1]);
         break;
     }
-
+    //FPA_TEMP=(cmd[8]*256+cmd[9])/10;
+    //printf("%d!%d\n%d!%d\n%d!%d\n%d!%d\n",cmd[8],cmd[9],cmd[10],cmd[11],cmd[12],cmd[13],cmd[14],cmd[15]);
+    //fp=fopen("/home/xueqian/srt_cloud/serial_flir/fpa_temp.txt","ab+");
+    //fwrite(FPA_TEMP,4,1,fp);
+    //fclose(fp);
     //memcpy(data, cmd, cnt);
     return cnt;
 }

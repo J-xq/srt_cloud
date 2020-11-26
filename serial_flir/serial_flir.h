@@ -28,12 +28,15 @@
 #define BAUD_RATE           0x07
 #define AGC_TYPE            0x13
 #define TAIL_SIZE           0x1b
+#define ACE_CORRECT         0x1c
 #define CONTRAST            0x14
 #define BRIGHTNESS          0x15
 #define GAIN_MODE           0x0a
 
 #define READ_SENSOR         0x20
-
+#define DDE_GAIN            0x2c
+#define AGC_FILTER          0x3e
+#define PLATEAU_LEVEL       0x3f
 #define DIGITAL_OUTPUT_MODE 0x12
 #define SERIAL_NUMBER       0x65
 #define CAMERA_PART         0x66
@@ -48,7 +51,7 @@
 #define ERASE_MEMORY_BLOCK  0xd4
 #define GET_NV_MEMORY_SIZE  0xd5
 #define GET_MEMORY_ADDRESS  0xd6
-
+#define GAIN_SWITCH_PARAMS  0xdb
 int serial_init(int);
 int send_command(int fd, unsigned char CODE, char *data, int ncmd);
 
